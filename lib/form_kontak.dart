@@ -128,13 +128,14 @@ class _FormKontakState extends State<FormKontak> {
   Future<void> upsertKontak() async {
     if (widget.kontak != null) {
       //update
-      await db.updateKontak(Kontak.fromMap({
-        'id' : widget.kontak!.id,
-        'name' : name!.text,
-        'mobileNo' : mobileNo!.text,
-        'email' : email!.text,
-        'company' : company!.text
-      }));
+      await db.updateKontak(Kontak(
+        id: widget.kontak!.id, 
+        name: name!.text, 
+        mobileNo: mobileNo!.text, 
+        email: email!.text, 
+        company: company!.text
+      ));
+
       Navigator.pop(context, 'update');
     } else {
       //insert
